@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using System.Reactive;
+﻿using System.Reactive;
 using System.Timers;
 using Desktop.Robot;
 using ReactiveUI;
@@ -16,7 +15,7 @@ public class MainWindowViewModel : ViewModelBase
     {
         _robot = new Robot();
         _timer = new Timer();
-        _timer.Elapsed += MoveMouse;
+        _timer.Elapsed += EmulateKey;
 
         Frequency = 5f;
         IsEnabled = false;
@@ -44,10 +43,10 @@ public class MainWindowViewModel : ViewModelBase
         _timer.Stop();
     }
 
-    private void MoveMouse(object? sender, ElapsedEventArgs elapsedEventArgs)
+    private void EmulateKey(object? sender, ElapsedEventArgs elapsedEventArgs)
     {
-        Point mousePosition = _robot.GetMousePosition();
-        mousePosition.X += 1;
-        _robot.MouseMove(mousePosition);
+        _robot.KeyDown('w');
+        _robot.Delay(10);
+        _robot.KeyUp('w');
     }
 }
