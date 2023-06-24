@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="AvoidAfk/App.axaml" value="AvoidAfk/AvoidAfk.csproj" />
+        <entry key="AvoidAfk/Views/MainWindow.axaml" value="AvoidAfk/AvoidAfk.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
