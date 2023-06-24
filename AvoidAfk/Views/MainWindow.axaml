@@ -13,5 +13,23 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
 
+    <Grid ColumnDefinitions="* *">
+        <Grid.Styles>
+            <Style Selector="Button">
+                <Setter Property="VerticalAlignment" Value="Stretch" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="CornerRadius" Value="20" />
+                <Setter Property="Margin" Value="20" />
+            </Style>
+        </Grid.Styles>
 
+        <Button Grid.Column="0"
+                Content="OFF" />
+        <Button Grid.Column="1"
+                Content="ON"/>
+    </Grid>
 </Window>
