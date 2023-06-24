@@ -19,20 +19,25 @@ public class MainWindowViewModel : ViewModelBase
 
         Frequency = 5f;
         IsEnabled = false;
-
+        Key = "w";
+        
         EnableCommand = ReactiveCommand.Create(Enable, this.WhenAnyValue(x => x.IsEnabled, b => !b));
         DisableCommand = ReactiveCommand.Create(Disable, this.WhenAnyValue(x => x.IsEnabled));
     }
 
     [Reactive] public float Frequency { get; set; }
     [Reactive] private bool IsEnabled { get; set; }
+    [Reactive] public string Key { set; get; }
 
     public ReactiveCommand<Unit, Unit> EnableCommand { get; set; }
     public ReactiveCommand<Unit, Unit> DisableCommand { get; set; }
 
     private void Enable()
     {
+        if (string.IsNullOrWhiteSpace(Key)) return;
         IsEnabled = true;
+        Key = Key[0].ToString().ToLower();
+        
         _timer.Interval = Frequency * 1000;
         _timer.Start();
     }
