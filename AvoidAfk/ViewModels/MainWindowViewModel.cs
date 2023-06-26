@@ -25,7 +25,7 @@ public class MainWindowViewModel : ViewModelBase
         DisableCommand = ReactiveCommand.Create(Disable, this.WhenAnyValue(x => x.IsEnabled));
     }
 
-    [Reactive] public float Frequency { get; set; }
+    [Reactive] public double Frequency { get; set; }
     [Reactive] private bool IsEnabled { get; set; }
     [Reactive] public string Key { set; get; }
 
@@ -50,8 +50,10 @@ public class MainWindowViewModel : ViewModelBase
 
     private void EmulateKey(object? sender, ElapsedEventArgs elapsedEventArgs)
     {
-        _robot.KeyDown('w');
+        if (string.IsNullOrWhiteSpace(Key)) return;
+
+        _robot.KeyDown(Key[0]);
         _robot.Delay(10);
-        _robot.KeyUp('w');
+        _robot.KeyUp(Key[0]);
     }
 }

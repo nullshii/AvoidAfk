@@ -37,10 +37,13 @@
                      CornerRadius="10"
                      BorderThickness="2"
                      TextAlignment="Center"
+                     IsReadOnly="{Binding IsEnabled}"
                      Text="{Binding Key, Mode=TwoWay}" />
             <Slider Grid.Row="1"
                     Orientation="Vertical"
                     HorizontalAlignment="Center"
+                    PointerWheelChanged="SliderPointerWheelChanged"
+                    Name="FrequencySlider"
                     Minimum="0.02"
                     Maximum="5"
                     IsEnabled="{Binding !IsEnabled}"
